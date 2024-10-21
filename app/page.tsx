@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from '@/app/ui/home.module.css';
 import { TestForm } from './components/TestForm';
 import { lusitana } from './ui/fonts';
+import Image from 'next/image'
 
 export default function Page() {
   return (
@@ -32,6 +33,8 @@ export default function Page() {
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}
+          <Image src='/hero-desktop.png' height={1000} width={760} className='hidden md:block' alt="Screenshots of the dashboard project showing desktop version"/>
+          <Image src='/hero-mobile.png' height={620 } width={560} className='block md:hidden' alt="Screenshots of the dashboard project showing desktop version"/>
         </div>
       </div>
       <TestForm />
