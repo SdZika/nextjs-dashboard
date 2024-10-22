@@ -5,9 +5,24 @@ import styles from '@/app/ui/home.module.css';
 import { TestForm } from './components/TestForm';
 import { lusitana } from './ui/fonts';
 import Image from 'next/image'
+import { UserFetchData } from './components/UserFetchData';
 
 export default function Page() {
+
+
+  const FetchData = async () => {
+    let data = await fetch("https://api.vercel.app/blog")
+    let posts = await data.json()
+  
+    return (
+      <div>
+        {posts.map((post: any) => <p key={post.id}>{post.title}</p>)}  
+      </div>
+    )
+  }
+
   return (
+   
     <main className="flex min-h-screen flex-col p-6">
       <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
       <AcmeLogo />
@@ -31,13 +46,18 @@ export default function Page() {
             <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
         </div>
+        
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
+       
           {/* Add Hero Images Here */}
           <Image src='/hero-desktop.png' height={1000} width={760} className='hidden md:block' alt="Screenshots of the dashboard project showing desktop version"/>
           <Image src='/hero-mobile.png' height={620 } width={560} className='block md:hidden' alt="Screenshots of the dashboard project showing desktop version"/>
         </div>
       </div>
       <TestForm />
+      <UserFetchData />
+      <FetchData />
     </main>
+  
   );
 }
