@@ -7,11 +7,16 @@ import { lusitana } from './ui/fonts';
 import Image from 'next/image'
 import { UserFetchData } from './components/UserFetchData';
 import { Counter } from './components/Counter';
+import { error } from 'console';
+import { useEffect, useState } from 'react';
+import { FetchAgain } from './components/FetchAgain';
 
 export default function Page() {
 
 
   const FetchData = async () => {
+
+    
     let data = await fetch("https://api.vercel.app/blog")
     let posts = await data.json()
   
@@ -59,6 +64,7 @@ export default function Page() {
       <TestForm />
       <UserFetchData />
       <FetchData />
+      <FetchAgain />
     </main>
   
   );
